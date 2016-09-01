@@ -1,4 +1,4 @@
-package fr.unice.polytech.mundus.data;
+package fr.unice.polytech.mundus;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
@@ -44,9 +44,15 @@ public class TestXML
         // 添加子节点:add之后就返回这个元素
         Element usernameElement = root2.addElement("username");
         Element passwordElement = root2.addElement("password");
-
         usernameElement.setText("Bond");
         passwordElement.setText("123");
+
+        Element root3 = root.addElement("student");
+        root3.addAttribute("id", "1");
+        Element usernameElement2 = root3.addElement("username");
+        Element passwordElement2 = root3.addElement("password");
+        usernameElement2.setText("A");
+        passwordElement2.setText("456");
 
  /*      // 输出
         // 输出到控制台
@@ -57,7 +63,7 @@ public class TestXML
         // 格式
         OutputFormat format = new OutputFormat("    ", true);// 设置缩进为4个空格，并且另起一行为true
         XMLWriter xmlWriter2 = new XMLWriter(
-                new FileOutputStream("helpMundus/outputs/student.xml"), format);
+                new FileOutputStream("helpMundus/outputs/user.xml"), format);
         xmlWriter2.write(document);
         //xmlWriter2.flush();
 /*

@@ -5,4 +5,8 @@
         <username>Bond</username>
         <password>123</password>
     </prof>
+    <student id="1">
+        <username>A</username>
+        <password>456</password>
+    </student>
 </userList>
