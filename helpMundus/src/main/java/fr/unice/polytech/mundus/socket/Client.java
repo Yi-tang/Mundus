@@ -57,7 +57,7 @@ public class Client {
      */
     private static void signUp(){
         while(true){
-            System.out.print("Please choose your speciality: \n 1.SI\n 2.MAM\n 3.eau\n 4.électronique\n 5.Bio\n");
+            System.out.print("Please choose your speciality: \n 1.SI\n 2.MAM\n 3.eau\n 4.electronique\n 5.Bio\n");
             int choice = input.nextInt();
             Student.Speciality speciality = null;
             switch (choice){
@@ -71,7 +71,7 @@ public class Client {
                     speciality= Student.Speciality.eau;
                     break;
                 case 4:
-                    speciality= Student.Speciality.électronique;
+                    speciality= Student.Speciality.electronique;
                     break;
                 case 5:
                     speciality= Student.Speciality.Bio;

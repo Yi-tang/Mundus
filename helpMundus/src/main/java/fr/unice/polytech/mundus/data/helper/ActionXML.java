@@ -16,7 +16,9 @@ import java.util.Iterator;
 
 public class ActionXML {
     SAXReader saxReader = new SAXReader();
-    Document document = null;//saxReader.read(new File("helpMundus/outputs/user.xml"));
+    File userFile = new File("helpMundus/src/main/resources/user.xml");
+    File informationFile = new File("helpMundus/src/main/resources/information.xml");
+    Document document = null;
     Element root = null;
 
     public ActionXML() {  }
@@ -28,7 +30,7 @@ public class ActionXML {
      */
     public User getUser(String name) throws DocumentException{
         User user = null;
-        document = saxReader.read(new File("helpMundus/outputs/user.xml"));
+        document = saxReader.read(userFile);
         root = document.getRootElement();
         for (Iterator iter = root.elementIterator(); iter.hasNext();)
         {
@@ -51,7 +53,7 @@ public class ActionXML {
      */
     public boolean addStudent(Student student) throws DocumentException {
         String name = student.getName();
-        document = saxReader.read(new File("helpMundus/outputs/user.xml"));
+        document = saxReader.read(userFile);
         if(getUser(name)==null){//hasn't got a user called the same name
             String password = student.getPassword();
             Student.Speciality speciality = student.getSpeciality();
@@ -81,7 +83,7 @@ public class ActionXML {
      * @return the information
      */
     public String getInformation(String type,String title) throws DocumentException{
-        document = saxReader.read(new File("helpMundus/outputs/information.xml"));
+        document = saxReader.read(informationFile);
         root = document.getRootElement();
         Element e = root.element(type);
         Element e2 = e.element(title);
@@ -94,7 +96,7 @@ public class ActionXML {
      * @param info the right information
      */
     public void modifyInformation(String type,String title,String info) throws DocumentException{
-        document = saxReader.read(new File("helpMundus/outputs/information.xml"));
+        document = saxReader.read(informationFile);
         root = document.getRootElement();
         Element e = root.element(type);
         Element e2 = e.element(title);
@@ -109,7 +111,7 @@ public class ActionXML {
      * @return false while the title already exists, true when success
      */
     public boolean addInformation(String type,String title,String info) throws DocumentException{
-        document = saxReader.read(new File("helpMundus/outputs/information.xml"));
+        document = saxReader.read(informationFile);
         root = document.getRootElement();
         Element e = root.element(type);
         if(e.element(title)==null){//doesn't exist such a title
