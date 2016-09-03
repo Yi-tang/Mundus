@@ -20,6 +20,6 @@ public class Student extends User {
     }
 
     public enum Speciality{
-        SI,MAM,eau,électronique,Bio;
+        SI,MAM,eau,electronique,Bio;
     }
 }

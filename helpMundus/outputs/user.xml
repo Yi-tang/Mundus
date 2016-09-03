@@ -4,9 +4,12 @@
     <prof id="0">
         <username>Bond</username>
         <password>123</password>
+        <mail>bond@unice.fr</mail>
     </prof>
     <student id="1">
         <username>A</username>
         <password>456</password>
+        <mail>di@sid</mail>
+        <speciality>SI</speciality>
     </student>
 </userList>

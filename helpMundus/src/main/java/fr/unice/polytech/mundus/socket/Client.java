@@ -101,7 +101,7 @@ public class Client {
 
             try {
                 socket = new Socket("localhost",8888);
-                sendData(request);//将数据发送到服务器
+                sendData(request);//send data to the server
                 response = getData();
                 System.out.println(response.getContent());
                 if(response.isFlag()==true) {//success in sign-up
