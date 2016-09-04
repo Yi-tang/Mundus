@@ -1,11 +1,9 @@
 package fr.unice.polytech.mundus.socket;
 
 import fr.unice.polytech.mundus.data.Student;
-import fr.unice.polytech.mundus.data.User;
 import fr.unice.polytech.mundus.data.helper.ActionXML;
 import fr.unice.polytech.mundus.protocol.Request;
 import fr.unice.polytech.mundus.protocol.Response;
-import fr.unice.polytech.mundus.service.UserService;
 import org.dom4j.DocumentException;
 
 import java.io.*;
@@ -41,7 +39,6 @@ public class Server {
         private ObjectOutputStream oos = null;
         private Request request;
         private Response response;
-        private UserService us = new UserService();//用户业务对象
         public ServerThread(Socket client) {
             super("ServerThread");
             socket = client;

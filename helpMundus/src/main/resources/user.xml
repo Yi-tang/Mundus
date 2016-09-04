@@ -17,11 +17,5 @@
     <password>888</password>  
     <mail>yijie.wang@etu.unice.fr</mail>  
     <speciality>SI</speciality> 
-  </student>  
-  <student id="3"> 
-    <username>peter</username>  
-    <password>hehe</password>  
-    <mail>di@s</mail>  
-    <speciality>Bio</speciality> 
   </student>
 </userList>
