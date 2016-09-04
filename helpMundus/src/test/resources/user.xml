@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<userList>
+    <prof id="0">
+        <username>Bond</username>
+        <password>123</password>
+        <mail>bond@unice.fr</mail>
+    </prof>
+    <student id="1">
+        <username>Alice</username>
+        <password>456</password>
+        <mail>Alice@etu.unice.fr</mail>
+        <speciality>SI</speciality>
+    </student>
+</userList>

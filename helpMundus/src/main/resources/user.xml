@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<userList>
-    <prof id="0">
-        <username>Bond</username>
-        <password>123</password>
-        <mail>bond@unice.fr</mail>
-    </prof>
-    <student id="1">
-        <username>A</username>
-        <password>456</password>
-        <mail>di@sid</mail>
-        <speciality>SI</speciality>
-    </student>
+<userList> 
+  <prof id="0"> 
+    <username>Bond</username>  
+    <password>123</password>  
+    <mail>bond@unice.fr</mail> 
+  </prof>  
+  <student id="1"> 
+    <username>TANG Yi</username>  
+    <password>666</password>  
+    <mail>yi.tang@etu.unice.fr</mail>  
+    <speciality>SI</speciality> 
+  </student>  
+  <student id="2"> 
+    <username>WANG Yijie</username>  
+    <password>888</password>  
+    <mail>yijie.wang@etu.unice.fr</mail>  
+    <speciality>SI</speciality> 
+  </student>  
+  <student id="3">
+    <username>peter</username>
+    <password>hehe</password>
+    <mail>di@s</mail>
+    <speciality>Bio</speciality>
+  </student>
 </userList>
