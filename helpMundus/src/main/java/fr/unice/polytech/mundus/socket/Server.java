@@ -2,9 +2,11 @@ package fr.unice.polytech.mundus.socket;
 
 import fr.unice.polytech.mundus.data.Student;
 import fr.unice.polytech.mundus.data.User;
+import fr.unice.polytech.mundus.data.helper.ActionXML;
 import fr.unice.polytech.mundus.protocol.Request;
 import fr.unice.polytech.mundus.protocol.Response;
 import fr.unice.polytech.mundus.service.UserService;
+import org.dom4j.DocumentException;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -60,12 +62,14 @@ public class Server {
                 e.printStackTrace();
             }
         }
-        private Response excute(Request request){
+        private Response excute(Request request) throws DocumentException, IOException {
+            ActionXML actionXML = null;
             Response response = new Response();
             Request.Command cmd = request.getCmd();//get the command of the request
             if(cmd.equals(Request.Command.signUp)){//registeration of user
-                User student = (Student)request.getDetail();
-                boolean flag = us.register(student);
+                Student student = (Student)request.getDetail();
+                actionXML = new ActionXML(new File("helpMundus/src/main/resources/user.xml"));
+                boolean flag = actionXML.addStudent(student);
                 response.setFlag(flag);
                 if(flag){
                     response.setContent("Registered successfully");
@@ -73,6 +77,7 @@ public class Server {
                     response.setContent("fail to register, try again please.");
                 }
             }
+            System.out.println("executed a request.");
             return response;
         }
 

@@ -57,6 +57,7 @@ public class ActionXML {
         }
         return null;
     }
+    /*
     public static void main( String[] args ) throws DocumentException, IOException {
         Student student = new Student("peter","hehe","di@s", Student.Speciality.Bio);
         SAXReader saxReader = new SAXReader();
@@ -82,8 +83,8 @@ public class ActionXML {
         xmlWriter.write(document);//write the new xml into the file
         xmlWriter.flush();
 
-
     }
+    */
 
 
     /**

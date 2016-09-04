@@ -81,7 +81,7 @@ public class Client {
                     System.out.println("**********************");
                     continue;
             }
-            System.out.print("Please enter the login: ");
+            System.out.print("Please enter your name as the login: ");
             String username = input.next();
             System.out.print("Please enter the password: ");
             String password = input.next();
@@ -103,6 +103,7 @@ public class Client {
                 socket = new Socket("localhost",8888);
                 sendData(request);//send data to the server
                 response = getData();
+                System.out.println("*****************");
                 System.out.println(response.getContent());
                 if(response.isFlag()==true) {//success in sign-up
                     System.out.println("*****************");

@@ -10,7 +10,7 @@ public class Response implements Serializable {
 
     private Type type;
     private boolean flag;//success or not according to the command
-    private String content;//result: information
+    private String content;//a phrase of the result or the information wanted
 
     public Type getType() {
         return type;
