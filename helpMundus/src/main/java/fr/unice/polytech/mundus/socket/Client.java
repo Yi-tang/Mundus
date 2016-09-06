@@ -27,7 +27,7 @@ public class Client {
 
     public Client(){
         try{
-            this.socket = new Socket(IP,4700);
+            this.socket = new Socket(IP,8888);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -35,6 +35,8 @@ public class Client {
 
     private void clos() throws IOException{
         this.socket.close();
+        this.oos.close();
+        this.ois.close();
     }
 
 
@@ -77,25 +79,25 @@ public class Client {
      * Registration of the user
      */
     private static void signUp(){
-        while(true){
+        while(true) {
             System.out.print("Please choose your speciality: \n 1.SI\n 2.MAM\n 3.eau\n 4.electronique\n 5.Bio\n");
             int choice = input.nextInt();
             Student.Speciality speciality = null;
-            switch (choice){
+            switch (choice) {
                 case 1:
-                    speciality= Student.Speciality.SI;
+                    speciality = Student.Speciality.SI;
                     break;
                 case 2:
-                    speciality= Student.Speciality.MAM;
+                    speciality = Student.Speciality.MAM;
                     break;
                 case 3:
-                    speciality= Student.Speciality.eau;
+                    speciality = Student.Speciality.eau;
                     break;
                 case 4:
-                    speciality= Student.Speciality.electronique;
+                    speciality = Student.Speciality.electronique;
                     break;
                 case 5:
-                    speciality= Student.Speciality.Bio;
+                    speciality = Student.Speciality.Bio;
                     break;
                 default:
                     System.out.println("Not a number from 1 to 5.");
@@ -108,7 +110,7 @@ public class Client {
             String password = input.next();
             System.out.print("Please enter the password again: ");
             String password2 = input.next();
-            if(!password.equals(password2)){
+            if (!password.equals(password2)) {
                 System.out.println("The two passwords aren't the same.");
                 System.out.println("**********************");
                 continue;
@@ -116,12 +118,18 @@ public class Client {
             System.out.print("Please enter your e-mail: ");
             String mail = input.next();
 
-            Student user = new Student(username,password,mail,speciality);
+            Student user = new Student(username, password, mail, speciality);
             request.setCmd(Request.Command.signUp);
             request.setDetail(user);
             sendData(request);
+            response = getData();
+            System.out.println("*****************");
+            System.out.println(response.getContent());
+            if (response.isFlag() == true) {//success in sign-up
+                System.out.println("*****************");
+                break;
 
-
+            }
         }
         //signIn();//sign in after sign-up
     }
@@ -130,9 +138,14 @@ public class Client {
         request.setCmd(Request.Command.consult);
         System.out.println("You can choose:houseRenting, contactAli,transport");
         System.out.println("Please enter your choice");
-        String detail="practical"+"+"+input.nextLine();
-        request.setDetail(detail);
-        sendData(request);
+        String choice;
+        while(!(choice=input.nextLine()).equals("fin")) {
+            String detail = "practical" + "+" + choice;
+            request.setDetail(detail);
+            sendData(request);
+
+        }
+
     }
 
     private static void ConsultSta() {
@@ -214,24 +227,23 @@ public class Client {
         System.out.println("please enter your choice:");
         int choice = input.nextInt();
 
-
-
             while (true) {
                 showMainMenu(choice);
 
                 //socket = new Socket("localhost",8888);
                 sendData(request);//send data to the server
-                //response = getData();
+                response = getData();
                 System.out.println("*****************");
                 System.out.println(response.getContent());
                 if (response.isFlag() == true) {//success in sign-up
                     System.out.println("*****************");
+                    break;
                     //not go into the loop to sign-up again
                 }
             }//catch (IOException e) {
             // e.printStackTrace();
             // }
-            //socket.close();
+            cl.clos();
         }
 
 
