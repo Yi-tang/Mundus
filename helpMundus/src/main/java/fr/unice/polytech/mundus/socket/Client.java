@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 /**
  * @author TANG Yi
+ * @author WANG Yijie
  */
 public class Client {
    // public static final int PORT = 8888;
@@ -157,7 +158,7 @@ public class Client {
         request.setCmd(Request.Command.consult);
         System.out.println("You can choose:SI,MAM,eau,electronique,Bio");
         System.out.println("Please enter your choice");
-        String detail="internship"+"+"+input.nextLine();
+        String detail="internship"+"+"+input.next();
         request.setDetail(detail);
         sendData(request);
         response = getData();
@@ -170,7 +171,7 @@ public class Client {
         request.setCmd(Request.Command.consult);
         System.out.println("You can choose:SI,MAM,eau,electronique,Bio;");
         System.out.println("Please enter your choice");
-        String detail="speciality"+"+"+input.nextLine();
+        String detail="speciality"+"+"+input.next();
         request.setDetail(detail);
         sendData(request);
         response = getData();
@@ -182,7 +183,7 @@ public class Client {
     private static void ChangeInfo(){
         System.out.println("please print the name and the content you want to change");
         request.setCmd(Request.Command.change);
-        String detail=input.nextLine();
+        String detail=input.next();
         request.setDetail(detail);
         sendData(request);
         response = getData();
@@ -245,6 +246,4 @@ public class Client {
             // }
         //cl.clos();
         }
-
-
     }

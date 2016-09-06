@@ -12,6 +12,7 @@ import java.net.Socket;
 
 /**
  * @author TANG Yi
+ * @author WANG Yijie
  */
 public class Server {
     public static final int PORT = 8888;
@@ -110,7 +111,7 @@ public class Server {
                 String answer = actionXML.getInformation("practical", element);
                 res.setContent(answer);
             }
-            if (root.equals("stage")) {
+            if (root.equals("internship")) {
                 String answer = actionXML.getInformation("internship", element);
                 res.setContent(answer);
             }
