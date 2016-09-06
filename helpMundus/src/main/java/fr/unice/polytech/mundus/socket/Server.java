@@ -16,6 +16,7 @@ import java.net.Socket;
  */
 public class Server {
     public static final int PORT = 8888;
+    public static final String password = "123";
 
     public static void main(String[] args) {
 
@@ -136,21 +137,27 @@ public class Server {
             ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/INFORMATION.xml"));
             String detail = (String) req.getDetail();
             String[] d = detail.split("\\+");
-            String root = d[0];
-            String element = d[1];
-            String content = d[2];
+            String pass = d[0];
+            String root = d[1];
+            String element = d[2];
+            String content = d[3];
+            if(!password.equals(pass)){
+                res.setFlag(false);
+                res.setContent("password wrong");
+            }
+            res.setFlag(true);
             if ("practical".equals(root)) {
                 actionXML.modifyInformation("practical",element,content);
                 res.setContent(suc);
-            }
-            if ("internship".equals(root)) {
+            }else if ("internship".equals(root)) {
                 actionXML.modifyInformation("internship",element,content);
                 res.setContent(suc);
-            }
-            if ("speciality".equals(root)) {
+            }else if ("speciality".equals(root)) {
                 actionXML.modifyInformation("speciality",element,content);
                 res.setContent(suc);
-
+            }else{
+                res.setFlag(false);
+                res.setContent("No such a directory");
             }
             return res;
         }

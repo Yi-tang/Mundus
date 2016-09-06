@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<informations>
-    <practical>
-        <houseRenting>111houseRenting</houseRenting>
-        <contactAli>Ali1234</contactAli>
-        <transport>www.envibus.com</transport>
-    </practical>
-    <internship>
-        <SI>sss</SI>
-        <MAM>mmmaaaaaaaaam</MAM>
-        <eau>wwwwwwwwwwww</eau>
-        <electronique>eeeeeeeeeeeeeee</electronique>
-        <Bio>bbbbbbbb</Bio>
-    </internship>
-    <speciality>
-        <SI>fffsssfffff</SI>
-        <MAM>fffffmmmaaaaaaaaam</MAM>
-        <eau>ffffwwwwwwwwwwww</eau>
-        <electronique>ffffeeeeeeeeeeeeeee</electronique>
-        <Bio>ffffbbbbbbbb</Bio>
-    </speciality>
+<informations> 
+  <practical> 
+    <houseRenting>111houseRenting</houseRenting>  
+    <contactAli>Ali1234</contactAli>  
+    <transport>www.envibus.com</transport> 
+  </practical>  
+  <internship> 
+    <SI>iwant</SI>  
+    <MAM>mmmaaaaaaaaam</MAM>  
+    <eau>wwwwwwwwwwww</eau>  
+    <electronique>eeeeeeeeeeeeeee</electronique>  
+    <Bio>bbbbbbbb</Bio> 
+  </internship>  
+  <speciality> 
+    <SI>fffsssfffff</SI>  
+    <MAM>fffffmmmaaaaaaaaam</MAM>  
+    <eau>ffffwwwwwwwwwwww</eau>  
+    <electronique>ffffeeeeeeeeeeeeeee</electronique>  
+    <Bio>ffffbbbbbbbb</Bio> 
+  </speciality> 
 </informations>

@@ -175,9 +175,16 @@ public class Client {
     }
 
     private static void changeInfo(){
-        System.out.println("please print the name and the content you want to CHANGE");
         request.setCmd(Request.Command.CHANGE);
-        String detail=input.next();
+        System.out.println("Please enter the code:");
+        String pass=input.next();
+        System.out.println("3 choices of info: practical,internship,or speciality.Please enter:");
+        String cla=input.next();
+        System.out.println("houseRenting, contactAli,transport,SI,MAM,EAU,ELECTRONIQUE,BIO.please enter the title:");
+        String name=input.next();
+        System.out.println("please enter the content you want:");
+        String content=input.next();
+        String detail=pass+"+"+cla+"+"+name+"+"+content;
         request.setDetail(detail);
         sendData(request);
         response = getData();
