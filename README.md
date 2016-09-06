@@ -2,31 +2,27 @@
 ## Membres
 TANG Yi, WANG Yijie
 - - -
-## Choices of application
->who are you?
+## Choices and protocol of application
+* class request 
+ * { enum type (signUp,consult,change), object detail}
+* class response
+ * { type(information; status of modificaition),boolean: flag,string:content}
 
-#### 1.Mundus
-* info d'école
-  * location de logement
-  * Coordonné de Ali
-  * Vacance???picture?
-* info de spécialité (Stage)
-  * SI
-  * Génie de l'eau
-  * MAM
-  * Génie d'électronique
-  * Génie Bio
+- - -
 
-#### 2.futur Mundus
-* informations
-  * info d'école
-  * info de spécialité
-* s'inscrire (pour quoi?)
-  * nom, mail, spécialité
+#### 1.Sign up(for future Mundus)
+* request: {type:signup,detail:student}
+ * class Student{String:name,String:mail, Speciality:speciality}
+* response: {boolean:flag,string:phrase of success or failure}
 
-#### 3.Responsable
-> code secret:???? 
+#### 2.Practical INFORMATION
+#### 3.Speciality INFORMATION
+#### 4.Stage INFORMATION
+* request: { type: consult, detail:String}
+* response: {content}
 
-* consulter les infos
-* modifier
-* supprimer
+#### 5.Change info(for responser)
+* request: {type:change,detail:String}
+* response: {string:content}
+
+#### 6.Quit
