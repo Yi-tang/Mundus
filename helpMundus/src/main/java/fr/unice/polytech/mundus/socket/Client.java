@@ -5,6 +5,7 @@ import fr.unice.polytech.mundus.data.Student;
 import fr.unice.polytech.mundus.data.User;
 import fr.unice.polytech.mundus.protocol.Response;
 
+import java.io.IOError;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,32 +16,50 @@ import java.util.Scanner;
  * @author TANG Yi
  */
 public class Client {
-    public static final int PORT = 8888;
-    private static Socket socket = null;
-    private static ObjectInputStream ois = null;
-    private static ObjectOutputStream oos = null;
+   // public static final int PORT = 8888;
+    private final String IP = "127.0.0.1";
+    private static Socket socket;
+    private  ObjectInputStream ois;
+    private  ObjectOutputStream oos ;
     private static Scanner input = new Scanner(System.in);
     private static Request request = new Request();
     private static Response response = new Response();
 
-    public static void main(String[] args) {
-        showMainMenu();
+    public Client(){
+        try{
+            this.socket = new Socket(IP,4700);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    private static void showMainMenu() {
-        System.out.println("***** Welcome to Help-Mundus! *****");
-        System.out.println("1.sign in\n2.sign up\n3.quit");
-        System.out.println("*************************");
-        System.out.println("please enter your choice");
-        int choice = input.nextInt();
+    private void clos() throws IOException{
+        this.socket.close();
+    }
+
+
+
+
+    private static void showMainMenu(int number) {
+
+        int choice = number;
         switch (choice) {
             case 1:
-                signIn();
-                break;
-            case 2:
                 signUp();
                 break;
+            case 2:
+                ConsultInfo();
+                break;
             case 3:
+                ConsultSpe();
+                break;
+            case 4:
+                ConsultSta();
+                break;
+            case 5:
+                ChangeInfo();
+                break;
+            case 6:
                 System.out.println("See you.");
                 System.exit(0);
                 break;
@@ -51,6 +70,8 @@ public class Client {
                 break;
         }
     }
+
+
 
     /**
      * Registration of the user
@@ -98,28 +119,42 @@ public class Client {
             Student user = new Student(username,password,mail,speciality);
             request.setCmd(Request.Command.signUp);
             request.setDetail(user);
+            sendData(request);
 
-            try {
-                socket = new Socket("localhost",8888);
-                sendData(request);//send data to the server
-                response = getData();
-                System.out.println("*****************");
-                System.out.println(response.getContent());
-                if(response.isFlag()==true) {//success in sign-up
-                    System.out.println("*****************");
-                    break;//not go into the loop to sign-up again
-                }
-            }catch (IOException e) {
-                e.printStackTrace();
-            }finally{
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+
         }
-        signIn();//sign in after sign-up
+        //signIn();//sign in after sign-up
+    }
+
+    private static void ConsultInfo() {
+        request.setCmd(Request.Command.consult);
+        String detail="practical";
+        request.setDetail(detail);
+        sendData(request);
+    }
+
+    private static void ConsultSta() {
+        request.setCmd(Request.Command.consult);
+        String detail="internship";
+        request.setDetail(detail);
+        sendData(request);
+    }
+
+    private static void ConsultSpe() {
+        request.setCmd(Request.Command.consult);
+        String detail="speciality";
+        request.setDetail(detail);
+        sendData(request);
+    }
+
+    private static void ChangeInfo(){
+        System.out.println("please print the name and the content you want to change");
+        request.setCmd(Request.Command.change);
+        String detail=input.nextLine();
+        request.setDetail(detail);
+        sendData(request);
+
+
     }
 
     /**
@@ -155,8 +190,43 @@ public class Client {
         return response;
     }
 
-    private static void signIn() {
+    /*private static void signIn() {
         System.out.println("Sign-in");
     }
+    */
 
-}
+
+
+    public static void main(String[] args)throws IOException{
+
+
+        Client cl= new Client();
+
+        System.out.println("***** Welcome to Help-Mundus! *****");
+        System.out.println("1.Sign up(for future Mundus)\n2.Practical information\n3.Speciality\n4.Stage\n5.Change info(for responser)\n6.Quit");
+        System.out.println("*************************");
+        System.out.println("please enter your choice:");
+        int choice = input.nextInt();
+
+
+
+            while (true) {
+                showMainMenu(choice);
+
+                //socket = new Socket("localhost",8888);
+                sendData(request);//send data to the server
+                //response = getData();
+                System.out.println("*****************");
+                System.out.println(response.getContent());
+                if (response.isFlag() == true) {//success in sign-up
+                    System.out.println("*****************");
+                    //not go into the loop to sign-up again
+                }
+            }//catch (IOException e) {
+            // e.printStackTrace();
+            // }
+            //socket.close();
+        }
+
+
+    }
