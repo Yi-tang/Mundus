@@ -2,22 +2,22 @@
 
 <informations> 
   <practical> 
-    <houseRenting>111houseRenting</houseRenting>  
-    <contactAli>Ali1234</contactAli>  
+    <houseRenting>information of houserenting</houseRenting>
+    <contactAli>Ali 06 12 34 56</contactAli>
     <transport>www.envibus.com</transport> 
   </practical>  
   <internship> 
-    <SI>iwant</SI>  
-    <MAM>mmmaaaaaaaaam</MAM>  
-    <eau>wwwwwwwwwwww</eau>  
-    <electronique>eeeeeeeeeeeeeee</electronique>  
-    <Bio>bbbbbbbb</Bio> 
+    <SI>stage:SI</SI>
+    <MAM>stage:MAM</MAM>
+    <EAU>stage:EAU</EAU>
+    <ELECTRONIQUE>stage:EAU</ELECTRONIQUE>
+    <BIO>stage:BIO</BIO>
   </internship>  
   <speciality> 
-    <SI>fffsssfffff</SI>  
-    <MAM>fffffmmmaaaaaaaaam</MAM>  
-    <eau>ffffwwwwwwwwwwww</eau>  
-    <electronique>ffffeeeeeeeeeeeeeee</electronique>  
-    <Bio>ffffbbbbbbbb</Bio> 
+    <SI>filiere:SI</SI>
+    <MAM>filiere:MAM</MAM>
+    <EAU>filiere:EAU</EAU>
+    <ELECTRONIQUE>filiere:ELECTRONIQUE</ELECTRONIQUE>
+    <BIO>filiere:BIO</BIO>
   </speciality> 
 </informations>
