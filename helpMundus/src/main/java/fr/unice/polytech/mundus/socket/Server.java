@@ -84,7 +84,7 @@ public class Server {
             Request req = request;
             Response res = new Response();
             Student student = (Student) req.getDetail();
-            ActionXML actionXML = new ActionXML(new File("helpMundus/src/main/resources/user.xml"));
+            ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/user.xml"));
             boolean flag = actionXML.addStudent(student);
             res.setFlag(flag);
             if (flag) {
@@ -98,8 +98,11 @@ public class Server {
         private Response consult(Request request) throws DocumentException {
             Request req = request;
             Response res = new Response();
-            ActionXML actionXML = new ActionXML(new File("helpMundus/src/main/resources/information.xml"));
             String detail = (String) req.getDetail();
+            System.out.println(detail);
+            ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/information.xml"));
+
+
             String[] d = detail.split("\\+");
             String root = d[0];
             String element = d[1];
@@ -123,7 +126,7 @@ public class Server {
         private Response change(Request request) throws DocumentException, IOException {
             Request req = request;
             Response res = new Response();
-            ActionXML actionXML = new ActionXML(new File("helpMundus/src/main/resources/information.xml"));
+            ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/information.xml"));
             String detail = (String) req.getDetail();
             String[] d = detail.split("\\+");
             String root = d[0];

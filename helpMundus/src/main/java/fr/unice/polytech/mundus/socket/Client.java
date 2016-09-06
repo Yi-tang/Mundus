@@ -27,7 +27,7 @@ public class Client {
 
     public Client(){
         try{
-            this.socket = new Socket(IP,8888);
+            this.socket = new Socket("localhost",8888);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -138,13 +138,13 @@ public class Client {
         request.setCmd(Request.Command.consult);
         System.out.println("You can choose:houseRenting, contactAli,transport");
         System.out.println("Please enter your choice");
-        String choice;
-        while(!(choice=input.nextLine()).equals("fin")) {
-            String detail = "practical" + "+" + choice;
-            request.setDetail(detail);
-            sendData(request);
-
-        }
+        String choice=input.next();
+         String detail = "practical" + "+" + choice;
+        request.setDetail(detail);
+        sendData(request);
+        response = getData();
+        System.out.println("*****************");
+        System.out.println(response.getContent());
 
     }
 
@@ -155,6 +155,9 @@ public class Client {
         String detail="internship"+"+"+input.nextLine();
         request.setDetail(detail);
         sendData(request);
+        response = getData();
+        System.out.println("*****************");
+        System.out.println(response.getContent());
     }
 
     private static void ConsultSpe() {
@@ -164,6 +167,9 @@ public class Client {
         String detail="speciality"+"+"+input.nextLine();
         request.setDetail(detail);
         sendData(request);
+        response = getData();
+        System.out.println("*****************");
+        System.out.println(response.getContent());
     }
 
     private static void ChangeInfo(){
@@ -172,6 +178,9 @@ public class Client {
         String detail=input.nextLine();
         request.setDetail(detail);
         sendData(request);
+        response = getData();
+        System.out.println("*****************");
+        System.out.println(response.getContent());
 
 
     }
