@@ -42,9 +42,13 @@ public class Client {
 
 
 
-    private static void showMainMenu(int number) {
+    private static void showMainMenu() {
+        System.out.println("***** Welcome to Help-Mundus! *****");
+        System.out.println("1.Sign up(for future Mundus)\n2.Practical information\n3.Speciality\n4.Stage\n5.Change info(for responser)\n6.Quit");
+        System.out.println("*************************");
+        System.out.println("please enter your choice:");
+        int choice = input.nextInt();
 
-        int choice = number;
         switch (choice) {
             case 1:
                 signUp();
@@ -230,29 +234,12 @@ public class Client {
 
         Client cl= new Client();
 
-        System.out.println("***** Welcome to Help-Mundus! *****");
-        System.out.println("1.Sign up(for future Mundus)\n2.Practical information\n3.Speciality\n4.Stage\n5.Change info(for responser)\n6.Quit");
-        System.out.println("*************************");
-        System.out.println("please enter your choice:");
-        int choice = input.nextInt();
+        showMainMenu();
 
-            while (true) {
-                showMainMenu(choice);
-
-                //socket = new Socket("localhost",8888);
-                sendData(request);//send data to the server
-                response = getData();
-                System.out.println("*****************");
-                System.out.println(response.getContent());
-                if (response.isFlag() == true) {//success in sign-up
-                    System.out.println("*****************");
-                    break;
-                    //not go into the loop to sign-up again
-                }
-            }//catch (IOException e) {
+        //catch (IOException e) {
             // e.printStackTrace();
             // }
-            cl.clos();
+        cl.clos();
         }
 
 
