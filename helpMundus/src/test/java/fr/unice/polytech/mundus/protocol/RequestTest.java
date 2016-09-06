@@ -9,16 +9,16 @@ import junit.framework.TestCase;
 public class RequestTest extends TestCase {
     public void testGetCmd(){
         Request request = new Request();
-        request.setCmd(Request.Command.signUp);
-        request.setDetail(new Student("A","123","a@ss.com", Student.Speciality.Bio));
-        assertEquals(Request.Command.signUp,request.getCmd());
+        request.setCmd(Request.Command.SIGN_UP);
+        request.setDetail(new Student("A","123","a@ss.com", Student.Speciality.BIO));
+        assertEquals(Request.Command.SIGN_UP,request.getCmd());
     }
     public void testGetDetail(){
         Request request = new Request();
-        request.setCmd(Request.Command.signUp);
-        request.setDetail(new Student("A","123","a@ss.com", Student.Speciality.Bio));
+        request.setCmd(Request.Command.SIGN_UP);
+        request.setDetail(new Student("A","123","a@ss.com", Student.Speciality.BIO));
         Student s1 = (Student) request.getDetail();
         assertEquals("A",s1.getName());
-        assertEquals(Student.Speciality.Bio,s1.getSpeciality());
+        assertEquals(Student.Speciality.BIO,s1.getSpeciality());
     }
 }

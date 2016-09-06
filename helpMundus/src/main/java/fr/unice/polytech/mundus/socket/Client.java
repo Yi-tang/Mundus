@@ -2,10 +2,8 @@ package fr.unice.polytech.mundus.socket;
 
 import fr.unice.polytech.mundus.protocol.Request;
 import fr.unice.polytech.mundus.data.Student;
-import fr.unice.polytech.mundus.data.User;
 import fr.unice.polytech.mundus.protocol.Response;
 
-import java.io.IOError;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -17,27 +15,23 @@ import java.util.Scanner;
  * @author WANG Yijie
  */
 public class Client {
-   // public static final int PORT = 8888;
-    private final String IP = "127.0.0.1";
+    private static final String cut = "*************************";
     private static Socket socket;
-    private  ObjectInputStream ois;
-    private  ObjectOutputStream oos ;
     private static Scanner input = new Scanner(System.in);
     private static Request request = new Request();
     private static Response response = new Response();
 
     public Client(){
         try{
-            this.socket = new Socket("localhost",8888);
+            socket = new Socket("localhost",8888);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
     private void clos() throws IOException{
-        this.socket.close();
-        this.oos.close();
-        this.ois.close();
+        socket.close();
+
     }
 
 
@@ -45,8 +39,8 @@ public class Client {
 
     private static void showMainMenu() {
         System.out.println("***** Welcome to Help-Mundus! *****");
-        System.out.println("1.Sign up(for future Mundus)\n2.Practical information\n3.Speciality\n4.Stage\n5.Change info(for responser)\n6.Quit");
-        System.out.println("*************************");
+        System.out.println("1.Sign up(for future Mundus)\n2.Practical INFORMATION\n3.Speciality\n4.Stage\n5.Change info(for responser)\n6.Quit");
+        System.out.println(cut);
         System.out.println("please enter your choice:");
         int choice = input.nextInt();
 
@@ -55,16 +49,16 @@ public class Client {
                 signUp();
                 break;
             case 2:
-                ConsultInfo();
+                consultInfo();
                 break;
             case 3:
-                ConsultSpe();
+                consultSpe();
                 break;
             case 4:
-                ConsultSta();
+                consultSta();
                 break;
             case 5:
-                ChangeInfo();
+                changeInfo();
                 break;
             case 6:
                 System.out.println("See you.");
@@ -85,9 +79,9 @@ public class Client {
      */
     private static void signUp(){
         while(true) {
-            System.out.print("Please choose your speciality: \n 1.SI\n 2.MAM\n 3.eau\n 4.electronique\n 5.Bio\n");
+            System.out.print("Please choose your speciality: \n 1.SI\n 2.MAM\n 3.EAU\n 4.ELECTRONIQUE\n 5.BIO\n");
             int choice = input.nextInt();
-            Student.Speciality speciality = null;
+            Student.Speciality speciality ;
             switch (choice) {
                 case 1:
                     speciality = Student.Speciality.SI;
@@ -96,17 +90,17 @@ public class Client {
                     speciality = Student.Speciality.MAM;
                     break;
                 case 3:
-                    speciality = Student.Speciality.eau;
+                    speciality = Student.Speciality.EAU;
                     break;
                 case 4:
-                    speciality = Student.Speciality.electronique;
+                    speciality = Student.Speciality.ELECTRONIQUE;
                     break;
                 case 5:
-                    speciality = Student.Speciality.Bio;
+                    speciality = Student.Speciality.BIO;
                     break;
                 default:
                     System.out.println("Not a number from 1 to 5.");
-                    System.out.println("**********************");
+                    System.out.println();
                     continue;
             }
             System.out.print("Please enter your name as the login: ");
@@ -117,21 +111,21 @@ public class Client {
             String password2 = input.next();
             if (!password.equals(password2)) {
                 System.out.println("The two passwords aren't the same.");
-                System.out.println("**********************");
+                System.out.println(cut);
                 continue;
             }
             System.out.print("Please enter your e-mail: ");
             String mail = input.next();
 
             Student user = new Student(username, password, mail, speciality);
-            request.setCmd(Request.Command.signUp);
+            request.setCmd(Request.Command.SIGN_UP);
             request.setDetail(user);
             sendData(request);
             response = getData();
-            System.out.println("*****************");
+            System.out.println(cut);
             System.out.println(response.getContent());
-            if (response.isFlag() == true) {//success in sign-up
-                System.out.println("*****************");
+            if (response.isFlag()) {//success in sign-up
+                System.out.println(cut);
                 break;
 
             }
@@ -139,8 +133,8 @@ public class Client {
         showMainMenu();
     }
 
-    private static void ConsultInfo() {
-        request.setCmd(Request.Command.consult);
+    private static void consultInfo() {
+        request.setCmd(Request.Command.CONSULT);
         System.out.println("You can choose:houseRenting, contactAli,transport");
         System.out.println("Please enter your choice");
         String choice=input.next();
@@ -148,46 +142,46 @@ public class Client {
         request.setDetail(detail);
         sendData(request);
         response = getData();
-        System.out.println("*****************");
+        System.out.println(cut);
         System.out.println(response.getContent());
         showMainMenu();
 
     }
 
-    private static void ConsultSta() {
-        request.setCmd(Request.Command.consult);
-        System.out.println("You can choose:SI,MAM,eau,electronique,Bio");
+    private static void consultSta() {
+        request.setCmd(Request.Command.CONSULT);
+        System.out.println("You can choose:SI,MAM,EAU,ELECTRONIQUE,BIO");
         System.out.println("Please enter your choice");
         String detail="internship"+"+"+input.next();
         request.setDetail(detail);
         sendData(request);
         response = getData();
-        System.out.println("*****************");
+        System.out.println(cut);
         System.out.println(response.getContent());
         showMainMenu();
     }
 
-    private static void ConsultSpe() {
-        request.setCmd(Request.Command.consult);
-        System.out.println("You can choose:SI,MAM,eau,electronique,Bio;");
+    private static void consultSpe() {
+        request.setCmd(Request.Command.CONSULT);
+        System.out.println("You can choose:SI,MAM,EAU,ELECTRONIQUE,BIO;");
         System.out.println("Please enter your choice");
         String detail="speciality"+"+"+input.next();
         request.setDetail(detail);
         sendData(request);
         response = getData();
-        System.out.println("*****************");
+        System.out.println(cut);
         System.out.println(response.getContent());
         showMainMenu();
     }
 
-    private static void ChangeInfo(){
-        System.out.println("please print the name and the content you want to change");
-        request.setCmd(Request.Command.change);
+    private static void changeInfo(){
+        System.out.println("please print the name and the content you want to CHANGE");
+        request.setCmd(Request.Command.CHANGE);
         String detail=input.next();
         request.setDetail(detail);
         sendData(request);
         response = getData();
-        System.out.println("*****************");
+        System.out.println(cut);
         System.out.println(response.getContent());
         showMainMenu();
 
@@ -227,12 +221,6 @@ public class Client {
         return response;
     }
 
-    /*private static void signIn() {
-        System.out.println("Sign-in");
-    }
-    */
-
-
 
     public static void main(String[] args)throws IOException{
 
@@ -241,9 +229,6 @@ public class Client {
 
         showMainMenu();
 
-        //catch (IOException e) {
-            // e.printStackTrace();
-            // }
-        //cl.clos();
+        cl.clos();
         }
     }

@@ -67,18 +67,23 @@ public class Server {
         private Response excute(Request request) throws DocumentException, IOException {
 
             Request re = request;
-            Response response = new Response();
+            response = new Response();
             Request.Command cmd = re.getCmd();//get the command of the request
 
-            if (cmd.equals(Request.Command.signUp)) {//registeration of user
-                response = signup(re);
+            if (cmd.equals(Request.Command.SIGN_UP)) {//registeration of user
+                System.out.println("executed a request.");
+                return signup(re);
             }
-            if (cmd.equals(Request.Command.consult)) {
-                response=consult(re);
+            if (cmd.equals(Request.Command.CONSULT)) {
+                System.out.println("executed a request.");
+                return consult(re);
             }
-            if(cmd.equals(Request.Command.change))
-            System.out.println("executed a request.");
-            return response;
+            if(cmd.equals(Request.Command.CHANGE)){
+                System.out.println("executed a request.");
+                return change(re);
+            }else{
+                return null;
+            }
         }
 
         private Response signup(Request request) throws DocumentException, IOException {
@@ -101,7 +106,7 @@ public class Server {
             Response res = new Response();
             String detail = (String) req.getDetail();
             System.out.println(detail);
-            ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/information.xml"));
+            ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/INFORMATION.xml"));
 
 
             String[] d = detail.split("\\+");
@@ -125,25 +130,26 @@ public class Server {
         }
 
         private Response change(Request request) throws DocumentException, IOException {
+            final String suc = "CHANGE successfully";
             Request req = request;
             Response res = new Response();
-            ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/information.xml"));
+            ActionXML actionXML = new ActionXML(new File("../helpMundus/src/main/resources/INFORMATION.xml"));
             String detail = (String) req.getDetail();
             String[] d = detail.split("\\+");
             String root = d[0];
             String element = d[1];
             String content = d[2];
-            if (root.equals("practical")) {
+            if ("practical".equals(root)) {
                 actionXML.modifyInformation("practical",element,content);
-                res.setContent("change successfully");
+                res.setContent(suc);
             }
-            if (root.equals("internship")) {
+            if ("internship".equals(root)) {
                 actionXML.modifyInformation("internship",element,content);
-                res.setContent("change successfully");
+                res.setContent(suc);
             }
-            if (root.equals("speciality")) {
+            if ("speciality".equals(root)) {
                 actionXML.modifyInformation("speciality",element,content);
-                res.setContent("change successfully");
+                res.setContent(suc);
 
             }
             return res;

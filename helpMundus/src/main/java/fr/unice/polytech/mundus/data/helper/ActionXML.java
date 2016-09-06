@@ -20,8 +20,6 @@ import java.util.Iterator;
 
 public class ActionXML {
     SAXReader saxReader = new SAXReader();
-    //File userFile = new File("helpMundus/src/main/resources/user.xml");
-    //File informationFile = new File("helpMundus/src/main/resources/information.xml");
     File file = null;
     Document document = null;
     Element root = null;
@@ -57,35 +55,6 @@ public class ActionXML {
         }
         return null;
     }
-    /*
-    public static void main( String[] args ) throws DocumentException, IOException {
-        Student student = new Student("peter","hehe","di@s", Student.Speciality.Bio);
-        SAXReader saxReader = new SAXReader();
-        Document document = saxReader.read(new File("helpMundus/src/main/resources/user.xml"));
-        Element root = document.getRootElement();
-        String name = student.getName();
-
-            Student.Speciality speciality = student.getSpeciality();
-
-            Element root2 = root.addElement("student");
-            int nb = root.elements().size()-1;
-            root2.addAttribute("id", String.valueOf(nb));
-            Element usernameElement = root2.addElement("username");
-            Element passwordElement = root2.addElement("password");
-            Element mailElement = root2.addElement("mail");
-            Element specialityElement = root2.addElement("speciality");
-            usernameElement.setText(name);
-            passwordElement.setText(student.getPassword());
-            mailElement.setText(student.getMail());
-            specialityElement.setText(speciality.name());
-        OutputFormat format = OutputFormat.createPrettyPrint();//th format of xml file
-        XMLWriter xmlWriter =new XMLWriter( new FileOutputStream("helpMundus/src/main/resources/user.xml"), format);
-        xmlWriter.write(document);//write the new xml into the file
-        xmlWriter.flush();
-
-    }
-    */
-
 
     /**
      * add a student into the user.xml
@@ -120,8 +89,8 @@ public class ActionXML {
 
     /**
      * @param type: "practical","internship" or"speciality"
-     * @param title : the exact title of the information
-     * @return the information
+     * @param title : the exact title of the INFORMATION
+     * @return the INFORMATION
      */
     public String getInformation(String type,String title) throws DocumentException{
         root = document.getRootElement();
@@ -132,8 +101,8 @@ public class ActionXML {
 
     /**
      * @param type "practical","internship" or"speciality"
-     * @param title : the exact title of the information
-     * @param info the right information
+     * @param title : the exact title of the INFORMATION
+     * @param info the right INFORMATION
      */
     public void modifyInformation(String type,String title,String info) throws DocumentException, IOException {
         root = document.getRootElement();
@@ -147,7 +116,7 @@ public class ActionXML {
      *
      * @param type  "practical","internship" or"speciality"
      * @param title : the exact title to be added
-     * @param info the information to be added
+     * @param info the INFORMATION to be added
      * @return false while the title already exists, true when success
      */
     public boolean addInformation(String type,String title,String info) throws DocumentException, IOException {
@@ -164,7 +133,7 @@ public class ActionXML {
     }
 
     /**
-     * change the xml file with the changement of Document
+     * CHANGE the xml file with the changement of Document
      * @throws IOException
      */
     public void writeXML() throws IOException {

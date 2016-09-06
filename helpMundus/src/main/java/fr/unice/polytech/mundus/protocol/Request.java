@@ -3,10 +3,9 @@ package fr.unice.polytech.mundus.protocol;
 import java.io.Serializable;
 
 /**
- * Created by TY on 2016/8/26.
+ * @author TANG Yi
  */
 public class Request implements Serializable {
-    //class request  { id (Mundus; futurMundus; Responsable) , type (signUp,signIn,check,modification,delete;), object detail}
 
     private static final long serialVersionUID = 1L;
     private Command cmd;//
@@ -29,7 +28,7 @@ public class Request implements Serializable {
     }
 
     public enum Command{
-        signUp,consult,change;//check,modification,delete;
+        SIGN_UP, CONSULT, CHANGE;
     }
     /*
 

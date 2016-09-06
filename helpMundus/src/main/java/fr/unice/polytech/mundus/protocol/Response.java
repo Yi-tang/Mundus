@@ -4,13 +4,13 @@ import java.io.Serializable;
 
 /**
  * @author TANG Yi .
- * { type(information; status of modificaition),boolean: flag,string:content}
+ * { type(INFORMATION; status of MODIFICAITION),boolean: flag,string:content}
  */
 public class Response implements Serializable {
 
     private Type type;
     private boolean flag;//success or not according to the command
-    private String content;//a phrase of the result or the information wanted
+    private String content;//a phrase of the result or the INFORMATION wanted
 
     public Type getType() {
         return type;
@@ -37,12 +37,10 @@ public class Response implements Serializable {
     }
 
     public boolean isInformation(){
-        if(Type.information.compareTo(type)==0)
-            return true;
-        else return false;
+        return Type.INFORMATION.compareTo(type)==0;
     }
 
     public enum Type{
-        information,modificaition
+        INFORMATION, MODIFICAITION
     }
 }
