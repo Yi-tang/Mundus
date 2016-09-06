@@ -128,21 +128,27 @@ public class Client {
 
     private static void ConsultInfo() {
         request.setCmd(Request.Command.consult);
-        String detail="practical";
+        System.out.println("You can choose:houseRenting, contactAli,transport");
+        System.out.println("Please enter your choice");
+        String detail="practical"+"+"+input.nextLine();
         request.setDetail(detail);
         sendData(request);
     }
 
     private static void ConsultSta() {
         request.setCmd(Request.Command.consult);
-        String detail="internship";
+        System.out.println("You can choose:houseRenting, contactAli,transport");
+        System.out.println("Please enter your choice");
+        String detail="internship"+"+"+input.nextLine();
         request.setDetail(detail);
         sendData(request);
     }
 
     private static void ConsultSpe() {
         request.setCmd(Request.Command.consult);
-        String detail="speciality";
+        System.out.println("You can choose:houseRenting, contactAli,transport");
+        System.out.println("Please enter your choice");
+        String detail="speciality"+"+"+input.nextLine();
         request.setDetail(detail);
         sendData(request);
     }
