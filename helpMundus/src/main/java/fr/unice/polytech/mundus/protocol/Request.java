@@ -29,7 +29,7 @@ public class Request implements Serializable {
     }
 
     public enum Command{
-        signUp,signIn;//check,modification,delete;
+        signUp,consult,change;//check,modification,delete;
     }
     /*
 
