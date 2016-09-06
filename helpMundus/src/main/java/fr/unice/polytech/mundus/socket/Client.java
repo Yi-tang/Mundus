@@ -135,7 +135,7 @@ public class Client {
 
             }
         }
-        //signIn();//sign in after sign-up
+        showMainMenu();
     }
 
     private static void ConsultInfo() {
@@ -143,18 +143,19 @@ public class Client {
         System.out.println("You can choose:houseRenting, contactAli,transport");
         System.out.println("Please enter your choice");
         String choice=input.next();
-         String detail = "practical" + "+" + choice;
+        String detail = "practical" + "+" + choice;
         request.setDetail(detail);
         sendData(request);
         response = getData();
         System.out.println("*****************");
         System.out.println(response.getContent());
+        showMainMenu();
 
     }
 
     private static void ConsultSta() {
         request.setCmd(Request.Command.consult);
-        System.out.println("You can choose:houseRenting, contactAli,transport");
+        System.out.println("You can choose:SI,MAM,eau,electronique,Bio");
         System.out.println("Please enter your choice");
         String detail="internship"+"+"+input.nextLine();
         request.setDetail(detail);
@@ -162,11 +163,12 @@ public class Client {
         response = getData();
         System.out.println("*****************");
         System.out.println(response.getContent());
+        showMainMenu();
     }
 
     private static void ConsultSpe() {
         request.setCmd(Request.Command.consult);
-        System.out.println("You can choose:houseRenting, contactAli,transport");
+        System.out.println("You can choose:SI,MAM,eau,electronique,Bio;");
         System.out.println("Please enter your choice");
         String detail="speciality"+"+"+input.nextLine();
         request.setDetail(detail);
@@ -174,6 +176,7 @@ public class Client {
         response = getData();
         System.out.println("*****************");
         System.out.println(response.getContent());
+        showMainMenu();
     }
 
     private static void ChangeInfo(){
@@ -185,6 +188,7 @@ public class Client {
         response = getData();
         System.out.println("*****************");
         System.out.println(response.getContent());
+        showMainMenu();
 
 
     }
@@ -239,7 +243,7 @@ public class Client {
         //catch (IOException e) {
             // e.printStackTrace();
             // }
-        cl.clos();
+        //cl.clos();
         }
 
 

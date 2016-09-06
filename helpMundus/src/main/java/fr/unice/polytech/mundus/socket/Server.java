@@ -110,7 +110,7 @@ public class Server {
                 String answer = actionXML.getInformation("practical", element);
                 res.setContent(answer);
             }
-            if (root.equals("internship")) {
+            if (root.equals("stage")) {
                 String answer = actionXML.getInformation("internship", element);
                 res.setContent(answer);
             }
